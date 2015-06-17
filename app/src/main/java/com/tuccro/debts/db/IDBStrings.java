@@ -10,4 +10,19 @@ public interface IDBStrings {
             "\t`date_of_create`\tTEXT NOT NULL\n" +
             ");";
 
+    String DB_CREATE_TABLE_MONEY = "CREATE TABLE `money` (\n" +
+            "\t`_id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +
+            "\t`currency_id`\tINTEGER NOT NULL,\n" +
+            "\t`sum`\tREAL NOT NULL,\n" +
+            "\t`note`\tTEXT,\n" +
+            "\t`date_add`\tTEXT NOT NULL,\n" +
+            "\t`date_begin`\tTEXT,\n" +
+            "\t`date_end`\tTEXT\n" +
+            ");";
+
+    String DB_CREATE_TABLE_CURRENCY = "CREATE TABLE `currency` (\n" +
+            "\t`_id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +
+            "\t`name`\tTEXT NOT NULL UNIQUE\n" +
+            ");";
+
 }
