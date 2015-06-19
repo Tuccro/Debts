@@ -12,7 +12,9 @@ public class DBHelper extends SQLiteOpenHelper implements IDBStrings {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(DB_CREATE_TABLE_CURRENCY);
+        db.execSQL(DB_CREATE_TABLE_PEOPLE);
+        db.execSQL(DB_CREATE_TABLE_MONEY);
     }
 
     @Override
