@@ -1,6 +1,15 @@
 package com.tuccro.debts.db;
 
+import com.tuccro.debts.R;
+
 public interface IDBStrings {
+
+    String DB_TABLE_PEOPLE = "people";
+    String DB_TABLE_MONEY = "money";
+    String DB_TABLE_CURRENCY = "currency";
+    String DB_TABLE_STATUS = "status";
+
+    String DB_TABLE_ID = "_id";
 
     String DB_CREATE_TABLE_PEOPLE = "CREATE TABLE `people` (\n" +
             "\t`_id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +
