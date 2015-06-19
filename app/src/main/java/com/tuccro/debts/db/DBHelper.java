@@ -16,10 +16,18 @@ public class DBHelper extends SQLiteOpenHelper implements IDBStrings {
         db.execSQL(DB_CREATE_TABLE_PEOPLE);
         db.execSQL(DB_CREATE_TABLE_MONEY);
         db.execSQL(DB_CREATE_TABLE_STATUS);
+
+        initSomeTables(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    private void initSomeTables(SQLiteDatabase db){
+        db.execSQL(DB_INSERT_CURRENCY_VALUES);
+        db.execSQL(DB_INSERT_STATUS_VALUES);
+    }
+
 }

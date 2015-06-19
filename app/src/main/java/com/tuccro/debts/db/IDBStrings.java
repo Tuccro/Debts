@@ -29,10 +29,18 @@ public interface IDBStrings {
     String DB_CREATE_TABLE_CURRENCY = "CREATE TABLE `currency` (\n" +
             "\t`_id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +
             "\t`name`\tTEXT NOT NULL UNIQUE\n" +
+            "\t`visible`\tINTEGER NOT NULL\n" +
             ");";
 
     String DB_CREATE_TABLE_STATUS = "CREATE TABLE `status` (\n" +
             "\t`_id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +
             "\t`name`\tINTEGER\n" +
             ");";
+
+    String DB_INSERT_CURRENCY_VALUES = "INSERT INTO `currency`(`name`,`visible`) \n" +
+            "VALUES ('UAH',1), ('USD',1), ('EUR',1), ('RUB',1), ('GBP',1), ('BYR',1);";
+
+    String DB_INSERT_STATUS_VALUES = "INSERT INTO `status`(`name`) \n" +
+            "VALUES ('new'), ('active'), ('archive'), ('deleted');";
+
 }
