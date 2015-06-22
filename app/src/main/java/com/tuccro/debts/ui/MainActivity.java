@@ -30,11 +30,16 @@ public class MainActivity extends AppCompatActivity  implements MoneyFragment.On
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    Fragment moneyFragment;
+    Fragment peopleFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        moneyFragment = MoneyFragment.getInstance();
+        peopleFragment = PeopleFragment.getInstance();
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -88,8 +93,8 @@ public class MainActivity extends AppCompatActivity  implements MoneyFragment.On
             // getItem is called to instantiate the fragment for the given page.
 
             if (position==1){
-                return (Fragment) MoneyFragment.getInstance();
-            } else return (Fragment) PeopleFragment.getInstance();
+                return moneyFragment;
+            } else return peopleFragment;
 
 //            return PlaceholderFragment.newInstance(position + 1);
         }
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity  implements MoneyFragment.On
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
