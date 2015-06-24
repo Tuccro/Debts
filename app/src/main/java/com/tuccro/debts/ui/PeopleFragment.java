@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.tuccro.debts.R;
 
@@ -20,6 +22,8 @@ public class PeopleFragment extends Fragment {
 
     private OnPeopleFragmentInteractionListener mListener;
     static PeopleFragment fragment;
+
+    ListView listView;
 
     public PeopleFragment() {
         // Required empty public constructor
@@ -39,7 +43,24 @@ public class PeopleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_people, container, false);
+        View view = inflater.inflate(R.layout.fragment_people, container, false);
+
+        listView = (ListView) view.findViewById(R.id.list_people);
+
+        String[] names = {"sdfsdfsdf", "nm,hjjhgfh", "dfghbnvbnm",
+                "ewrqewfgdsf", "sggfjhhgfgfdg", "rertertdfdfg",
+                "sfdfgfhrtrt", "uykujhfgdfgdfg", "werwgdfgdgd",
+                "nm,hjjhgfh", "dfghbnvbnm", "ewrqewfgdsf",
+                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
+                "uykujhfgdfgdfg", "uykujhfgdfgdfg", "werwgdfgdgd",
+                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
+                "wqerqewqrwer", "utuyytrtgfbb", "xcvcgtertdfg",
+                "qweewretretre", "iuughhcvvchghg", "cvvdfgdfgdfgdf",
+                "tregdffvcxbxb", "cccgdhgfhgfhfg", "pufghhgdfgfd"};
+
+        listView.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, names));
+        listView.setBackgroundColor(R.color.Black);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
