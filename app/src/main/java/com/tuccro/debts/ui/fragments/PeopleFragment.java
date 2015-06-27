@@ -1,4 +1,4 @@
-package com.tuccro.debts.ui;
+package com.tuccro.debts.ui.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -7,28 +7,33 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.tuccro.debts.R;
-
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MoneyFragment.OnMoneyFragmentInteractionListener} interface
+ * {@link PeopleFragment.OnPeopleFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class MoneyFragment extends Fragment {
+public class PeopleFragment extends Fragment {
 
-    private OnMoneyFragmentInteractionListener mListener;
-    static MoneyFragment fragment;
+    private OnPeopleFragmentInteractionListener mListener;
+    static PeopleFragment fragment;
 
-    public MoneyFragment() {
+    ListView listView;
+
+    public PeopleFragment() {
         // Required empty public constructor
     }
 
-    public static MoneyFragment getInstance() {
+    public static PeopleFragment getInstance() {
 
-        if(fragment==null) fragment = new MoneyFragment();
+        if (fragment == null) {
+            fragment = new PeopleFragment();
+        }
 
         return fragment;
     }
@@ -38,7 +43,24 @@ public class MoneyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_money, container, false);
+        View view = inflater.inflate(R.layout.fragment_people, container, false);
+
+        listView = (ListView) view.findViewById(R.id.list_people);
+
+        String[] names = {"sdfsdfsdf", "nm,hjjhgfh", "dfghbnvbnm",
+                "ewrqewfgdsf", "sggfjhhgfgfdg", "rertertdfdfg",
+                "sfdfgfhrtrt", "uykujhfgdfgdfg", "werwgdfgdgd",
+                "nm,hjjhgfh", "dfghbnvbnm", "ewrqewfgdsf",
+                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
+                "uykujhfgdfgdfg", "uykujhfgdfgdfg", "werwgdfgdgd",
+                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
+                "wqerqewqrwer", "utuyytrtgfbb", "xcvcgtertdfg",
+                "qweewretretre", "iuughhcvvchghg", "cvvdfgdfgdfgdf",
+                "tregdffvcxbxb", "cccgdhgfhgfhfg", "pufghhgdfgfd"};
+
+        listView.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, names));
+        listView.setBackgroundColor(R.color.Black);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -52,7 +74,7 @@ public class MoneyFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnMoneyFragmentInteractionListener) activity;
+            mListener = (OnPeopleFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -75,7 +97,7 @@ public class MoneyFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnMoneyFragmentInteractionListener {
+    public interface OnPeopleFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }

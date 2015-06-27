@@ -1,10 +1,10 @@
-package com.tuccro.debts;
+package com.tuccro.debts.ui.adapters;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class PeopleAdapter extends BaseAdapter {
+public class MoneyAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return 0;

@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tuccro.debts.R;
+import com.tuccro.debts.ui.fragments.MoneyFragment;
+import com.tuccro.debts.ui.fragments.PeopleFragment;
 
 import java.util.Locale;
 
