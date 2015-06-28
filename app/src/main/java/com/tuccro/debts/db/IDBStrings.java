@@ -1,8 +1,9 @@
 package com.tuccro.debts.db;
 
-import com.tuccro.debts.R;
-
 public interface IDBStrings {
+
+    String DB_NAME = "debts.db";
+    int DB_VERSION = 1;
 
     String DB_TABLE_PEOPLE = "people";
     String DB_TABLE_MONEY = "money";
