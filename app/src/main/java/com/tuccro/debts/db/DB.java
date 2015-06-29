@@ -1,6 +1,7 @@
 package com.tuccro.debts.db;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DB implements IDBStrings {
@@ -20,6 +21,10 @@ public class DB implements IDBStrings {
 
     public void close() {
         if (dbHelper != null) dbHelper.close();
+    }
+
+    public Cursor getAllPeople(){
+        return db.query(DB_TABLE_PEOPLE, null, null, null, null, null, "name");
     }
 }
 

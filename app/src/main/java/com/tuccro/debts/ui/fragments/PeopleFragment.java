@@ -7,10 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tuccro.debts.R;
+import com.tuccro.debts.core.Human;
+import com.tuccro.debts.db.DB;
+import com.tuccro.debts.ui.adapters.PeopleAdapter;
+import com.tuccro.debts.utils.Utils;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,18 +52,26 @@ public class PeopleFragment extends Fragment {
 
         listView = (ListView) view.findViewById(R.id.list_people);
 
-        String[] names = {"sdfsdfsdf", "nm,hjjhgfh", "dfghbnvbnm",
-                "ewrqewfgdsf", "sggfjhhgfgfdg", "rertertdfdfg",
-                "sfdfgfhrtrt", "uykujhfgdfgdfg", "werwgdfgdgd",
-                "nm,hjjhgfh", "dfghbnvbnm", "ewrqewfgdsf",
-                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
-                "uykujhfgdfgdfg", "uykujhfgdfgdfg", "werwgdfgdgd",
-                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
-                "wqerqewqrwer", "utuyytrtgfbb", "xcvcgtertdfg",
-                "qweewretretre", "iuughhcvvchghg", "cvvdfgdfgdfgdf",
-                "tregdffvcxbxb", "cccgdhgfhgfhfg", "pufghhgdfgfd"};
+//        String[] names = {"sdfsdfsdf", "nm,hjjhgfh", "dfghbnvbnm",
+//                "ewrqewfgdsf", "sggfjhhgfgfdg", "rertertdfdfg",
+//                "sfdfgfhrtrt", "uykujhfgdfgdfg", "werwgdfgdgd",
+//                "nm,hjjhgfh", "dfghbnvbnm", "ewrqewfgdsf",
+//                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
+//                "uykujhfgdfgdfg", "uykujhfgdfgdfg", "werwgdfgdgd",
+//                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
+//                "wqerqewqrwer", "utuyytrtgfbb", "xcvcgtertdfg",
+//                "qweewretretre", "iuughhcvvchghg", "cvvdfgdfgdfgdf",
+//                "tregdffvcxbxb", "cccgdhgfhgfhfg", "pufghhgdfgfd"};
+//
+//        listView.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, names));
 
-        listView.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, names));
+        DB db = new DB(getActivity().getApplicationContext());
+        db.open();
+        ArrayList<Human> people = Utils.getPeopleFromDbCursor(db.getAllPeople());
+        db.close();
+
+        listView.setAdapter(new PeopleAdapter(getActivity().getApplicationContext(), people));
+
         listView.setBackgroundColor(R.color.Black);
         return view;
     }
