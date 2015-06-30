@@ -52,19 +52,6 @@ public class PeopleFragment extends Fragment {
 
         listView = (ListView) view.findViewById(R.id.list_people);
 
-//        String[] names = {"sdfsdfsdf", "nm,hjjhgfh", "dfghbnvbnm",
-//                "ewrqewfgdsf", "sggfjhhgfgfdg", "rertertdfdfg",
-//                "sfdfgfhrtrt", "uykujhfgdfgdfg", "werwgdfgdgd",
-//                "nm,hjjhgfh", "dfghbnvbnm", "ewrqewfgdsf",
-//                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
-//                "uykujhfgdfgdfg", "uykujhfgdfgdfg", "werwgdfgdgd",
-//                "sggfjhhgfgfdg", "rertertdfdfg", "sfdfgfhrtrt",
-//                "wqerqewqrwer", "utuyytrtgfbb", "xcvcgtertdfg",
-//                "qweewretretre", "iuughhcvvchghg", "cvvdfgdfgdfgdf",
-//                "tregdffvcxbxb", "cccgdhgfhgfhfg", "pufghhgdfgfd"};
-//
-//        listView.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, names));
-
         DB db = new DB(getActivity().getApplicationContext());
         db.open();
         ArrayList<Human> people = Utils.getPeopleFromDbCursor(db.getAllPeople());

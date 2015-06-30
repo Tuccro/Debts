@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.tuccro.debts.R;
 
@@ -21,6 +22,7 @@ public class MoneyFragment extends Fragment {
 
     private OnMoneyFragmentInteractionListener mListener;
     static MoneyFragment fragment;
+    Button buttonAddEntry;
 
     public MoneyFragment() {
         // Required empty public constructor
@@ -28,7 +30,7 @@ public class MoneyFragment extends Fragment {
 
     public static MoneyFragment getInstance() {
 
-        if(fragment==null) fragment = new MoneyFragment();
+        if (fragment == null) fragment = new MoneyFragment();
 
         return fragment;
     }
@@ -37,8 +39,20 @@ public class MoneyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_money, container, false);
+        View view = inflater.inflate(R.layout.fragment_money, container, false);
+
+        buttonAddEntry = (Button) view.findViewById(R.id.bt_add_money);
+
+        buttonAddEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoneyAddFragment moneyAddFragment = new MoneyAddFragment();
+//                moneyAddFragment.show(getFragmentManager(), null);
+
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
