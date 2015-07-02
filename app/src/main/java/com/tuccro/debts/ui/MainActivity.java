@@ -16,8 +16,8 @@ import com.tuccro.debts.ui.fragments.PeopleFragment;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity  implements MoneyFragment.OnMoneyFragmentInteractionListener,
-        PeopleFragment.OnPeopleFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements MoneyFragment.OnMoneyFragmentInteractionListener,
+        PeopleFragment.OnPeopleFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity  implements MoneyFragment.On
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
 
-            if (position==1){
+            if (position == 1) {
                 return moneyFragment;
             } else return peopleFragment;
 

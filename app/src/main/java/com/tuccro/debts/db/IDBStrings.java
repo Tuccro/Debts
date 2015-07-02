@@ -15,7 +15,7 @@ public interface IDBStrings {
     String DB_PEOPLE_ID = "_id";
     String DB_PEOPLE_NAME = "name";
     String DB_PEOPLE_PHONE = "phone";
-    String DB_PEOPLE_DATE_OF_CREATE="date_of_create";
+    String DB_PEOPLE_DATE_OF_CREATE = "date_of_create";
 
     String DB_CREATE_TABLE_PEOPLE = "CREATE TABLE `people` (\n" +
             "\t`_id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +

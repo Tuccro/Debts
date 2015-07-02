@@ -29,6 +29,5 @@ public class Utils implements IDBStrings {
 
         } while (cursor.moveToNext());
         return people;
-
     }
 }

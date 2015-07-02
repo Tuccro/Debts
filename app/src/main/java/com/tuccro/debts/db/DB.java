@@ -23,7 +23,7 @@ public class DB implements IDBStrings {
         if (dbHelper != null) dbHelper.close();
     }
 
-    public Cursor getAllPeople(){
+    public Cursor getAllPeople() {
         return db.query(DB_TABLE_PEOPLE, null, null, null, null, null, "name");
     }
 }

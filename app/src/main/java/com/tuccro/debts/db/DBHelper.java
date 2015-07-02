@@ -25,11 +25,10 @@ public class DBHelper extends SQLiteOpenHelper implements IDBStrings {
 
     }
 
-    private void initSomeTables(SQLiteDatabase db){
+    private void initSomeTables(SQLiteDatabase db) {
         db.execSQL(DB_INSERT_CURRENCY_VALUES);
         db.execSQL(DB_INSERT_STATUS_VALUES);
 
         db.execSQL(DB_INSERT_PEOPLE);
     }
-
 }
