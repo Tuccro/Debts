@@ -26,5 +26,9 @@ public class DB implements IDBStrings {
     public Cursor getAllPeople() {
         return db.query(DB_TABLE_PEOPLE, null, null, null, null, null, "name");
     }
+
+    public Cursor getAllMoney() {
+        return db.query(DB_TABLE_MONEY, null, null, null, null, null, "name");
+    }
 }
 
