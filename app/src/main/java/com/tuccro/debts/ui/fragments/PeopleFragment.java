@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.melnykov.fab.FloatingActionButton;
 import com.tuccro.debts.R;
 import com.tuccro.debts.core.Human;
 import com.tuccro.debts.db.DB;
@@ -27,6 +28,7 @@ public class PeopleFragment extends Fragment {
 
     private OnPeopleFragmentInteractionListener mListener;
     static PeopleFragment fragment;
+    private FloatingActionButton buttonAddHuman;
 
     ListView listView;
 
@@ -60,6 +62,8 @@ public class PeopleFragment extends Fragment {
         listView.setAdapter(new PeopleAdapter(getActivity().getApplicationContext(), people));
 
         listView.setBackgroundColor(R.color.Black);
+
+        buttonAddHuman = (FloatingActionButton) view.findViewById(R.id.bt_add_human);
         return view;
     }
 
