@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity implements MoneyFragment.OnM
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        getFragmentManager()
     }
 
     @Override
