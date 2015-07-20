@@ -46,7 +46,8 @@ public class MoneyFragment extends Fragment {
         buttonAddEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoneyAddFragment moneyAddFragment = new MoneyAddFragment();
+                MoneyAddFragment moneyAddFragment = new MoneyAddFragment(getActivity());
+                moneyAddFragment.show();
 //                moneyAddFragment.show(getFragmentManager(), null);
 
             }
