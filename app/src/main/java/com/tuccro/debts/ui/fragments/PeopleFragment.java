@@ -64,6 +64,13 @@ public class PeopleFragment extends Fragment {
         listView.setBackgroundColor(R.color.Black);
 
         buttonAddHuman = (FloatingActionButton) view.findViewById(R.id.bt_add_human);
+        buttonAddHuman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HumanAddFragment humanAddFragment = new HumanAddFragment(getActivity());
+                humanAddFragment.show();
+            }
+        });
         return view;
     }
 

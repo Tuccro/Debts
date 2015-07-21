@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
-import android.widget.ScrollView;
+import android.view.View;
 
 import com.tuccro.debts.R;
 
@@ -20,12 +20,10 @@ public class MoneyAddFragment extends AlertDialog {
         super(context);
 
         LayoutInflater inflater = getLayoutInflater();
-        ScrollView f1 = (ScrollView) findViewById(R.layout.fragment_money_add);
-
-
+        View view = inflater.inflate(R.layout.fragment_money_add, null);
 
         this.setTitle("HI!");
-        this.setView(inflater.inflate(R.layout.fragment_money_add, f1, false));
+        this.setView(view);
         this.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
