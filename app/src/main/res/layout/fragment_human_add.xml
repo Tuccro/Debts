@@ -14,6 +14,7 @@
             android:text="Name" />
 
         <EditText
+            android:id="@+id/et_human_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -23,9 +24,10 @@
             android:text="Phone" />
 
         <EditText
-            android:inputType="phone"
+            android:id="@+id/et_human_phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="phone" />
 
     </LinearLayout>
 

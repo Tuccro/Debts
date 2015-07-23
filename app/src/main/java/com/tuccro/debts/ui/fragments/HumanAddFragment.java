@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
 import com.tuccro.debts.R;
 import com.tuccro.debts.db.DB;
@@ -16,6 +17,9 @@ public class HumanAddFragment extends AlertDialog {
 
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_human_add, null);
+
+        final EditText etName = (EditText) view.findViewById(R.id.et_human_name);
+        final EditText etPhone = (EditText) view.findViewById(R.id.et_human_phone);
 
         this.setView(view);
 
@@ -32,9 +36,10 @@ public class HumanAddFragment extends AlertDialog {
                 DB db = new DB(context);
                 db.open();
 
-                // TODO: init editTexts
-                db.addHuman("name", "phone");
+                db.addHuman(etName.getText().toString(), etPhone.getText().toString());
                 db.close();
+
+                PeopleFragment.getInstance().init();
             }
         });
     }

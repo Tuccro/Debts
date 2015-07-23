@@ -53,15 +53,9 @@ public class PeopleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_people, container, false);
 
         listView = (ListView) view.findViewById(R.id.list_people);
-
-        DB db = new DB(getActivity().getApplicationContext());
-        db.open();
-        ArrayList<Human> people = Utils.getPeopleFromDbCursor(db.getAllPeople());
-        db.close();
-
-        listView.setAdapter(new PeopleAdapter(getActivity().getApplicationContext(), people));
-
         listView.setBackgroundColor(R.color.Black);
+
+        init();
 
         buttonAddHuman = (FloatingActionButton) view.findViewById(R.id.bt_add_human);
         buttonAddHuman.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +66,15 @@ public class PeopleFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public void init() {
+        DB db = new DB(getActivity().getApplicationContext());
+        db.open();
+        ArrayList<Human> people = Utils.getPeopleFromDbCursor(db.getAllPeople());
+        db.close();
+
+        listView.setAdapter(new PeopleAdapter(getActivity().getApplicationContext(), people));
     }
 
     // TODO: Rename method, update argument and hook method into UI event
