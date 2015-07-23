@@ -32,7 +32,8 @@ public class HumanAddFragment extends AlertDialog {
                 DB db = new DB(context);
                 db.open();
 
-                //TODO: add db add method
+                // TODO: init editTexts
+                db.addHuman("name", "phone");
                 db.close();
             }
         });
