@@ -3,7 +3,7 @@
     android:id="@+id/sv_money_add"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tuccro.debts.ui.fragments.MoneyAddFragment">
+    tools:context="com.tuccro.debts.ui.dialogs.MoneyAddDialog">
 
     <LinearLayout
         android:layout_width="match_parent"

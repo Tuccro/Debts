@@ -1,4 +1,4 @@
-package com.tuccro.debts.ui.fragments;
+package com.tuccro.debts.ui.dialogs;
 
 
 import android.app.Fragment;
@@ -13,14 +13,14 @@ import com.tuccro.debts.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MoneyAddFragment extends AlertDialog {
+public class MoneyAddDialog extends AlertDialog {
 
 
-    protected MoneyAddFragment(Context context) {
+    public MoneyAddDialog(Context context) {
         super(context);
 
         LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.fragment_money_add, null);
+        View view = inflater.inflate(R.layout.dialog_money_add, null);
 
         this.setTitle("HI!");
         this.setView(view);

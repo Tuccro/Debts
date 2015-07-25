@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.melnykov.fab.FloatingActionButton;
 import com.tuccro.debts.R;
+import com.tuccro.debts.ui.dialogs.MoneyAddDialog;
 
 
 /**
@@ -46,9 +47,8 @@ public class MoneyFragment extends Fragment {
         buttonAddEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoneyAddFragment moneyAddFragment = new MoneyAddFragment(getActivity());
-                moneyAddFragment.show();
-//                moneyAddFragment.show(getFragmentManager(), null);
+                MoneyAddDialog moneyAddDialog = new MoneyAddDialog(getActivity());
+                moneyAddDialog.show();
 
             }
         });

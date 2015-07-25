@@ -14,6 +14,7 @@ import com.tuccro.debts.R;
 import com.tuccro.debts.core.Human;
 import com.tuccro.debts.db.DB;
 import com.tuccro.debts.ui.adapters.PeopleAdapter;
+import com.tuccro.debts.ui.dialogs.HumanAddDialog;
 import com.tuccro.debts.utils.Utils;
 
 import java.util.ArrayList;
@@ -60,8 +61,8 @@ public class PeopleFragment extends Fragment {
         buttonAddHuman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HumanAddFragment humanAddFragment = new HumanAddFragment(getActivity());
-                humanAddFragment.show();
+                HumanAddDialog humanAddDialog = new HumanAddDialog(getActivity());
+                humanAddDialog.show();
             }
         });
         return view;

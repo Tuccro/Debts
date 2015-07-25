@@ -1,4 +1,4 @@
-package com.tuccro.debts.ui.fragments;
+package com.tuccro.debts.ui.dialogs;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,14 +9,15 @@ import android.widget.EditText;
 
 import com.tuccro.debts.R;
 import com.tuccro.debts.db.DB;
+import com.tuccro.debts.ui.fragments.PeopleFragment;
 
-public class HumanAddFragment extends AlertDialog {
+public class HumanAddDialog extends AlertDialog {
 
-    protected HumanAddFragment(final Context context) {
+    public HumanAddDialog(final Context context) {
         super(context);
 
         LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.fragment_human_add, null);
+        View view = inflater.inflate(R.layout.dialog_human_add, null);
 
         final EditText etName = (EditText) view.findViewById(R.id.et_human_name);
         final EditText etPhone = (EditText) view.findViewById(R.id.et_human_phone);
