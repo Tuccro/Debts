@@ -7,12 +7,12 @@ public class Money {
     int idCurrency;
     double sum;
     String note;
-    String dateAdd;
-    String dateBegin;
-    String dateEnd;
+    long dateAdd;
+    long dateBegin;
+    long dateEnd;
     int idStatus;
 
-    public Money(int id, int idHuman, int idCurrency, double sum, String note, String dateAdd, String dateBegin, String dateEnd, int idStatus) {
+    public Money(int id, int idHuman, int idCurrency, double sum, String note, long dateAdd, long dateBegin, long dateEnd, int idStatus) {
         this.id = id;
         this.idHuman = idHuman;
         this.idCurrency = idCurrency;
@@ -24,7 +24,7 @@ public class Money {
         this.idStatus = idStatus;
     }
 
-    public Money(int idStatus, String dateBegin, String dateAdd, String note, double sum, int idCurrency, int idHuman, int id) {
+    public Money(int idStatus, long dateBegin, long dateAdd, String note, double sum, int idCurrency, int idHuman, int id) {
         this.idStatus = idStatus;
         this.dateBegin = dateBegin;
         this.dateAdd = dateAdd;
@@ -75,27 +75,27 @@ public class Money {
         this.note = note;
     }
 
-    public String getDateAdd() {
+    public long getDateAdd() {
         return dateAdd;
     }
 
-    public void setDateAdd(String dateAdd) {
+    public void setDateAdd(long dateAdd) {
         this.dateAdd = dateAdd;
     }
 
-    public String getDateBegin() {
+    public long getDateBegin() {
         return dateBegin;
     }
 
-    public void setDateBegin(String dateBegin) {
+    public void setDateBegin(long dateBegin) {
         this.dateBegin = dateBegin;
     }
 
-    public String getDateEnd() {
+    public long getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(String dateEnd) {
+    public void setDateEnd(long dateEnd) {
         this.dateEnd = dateEnd;
     }
 

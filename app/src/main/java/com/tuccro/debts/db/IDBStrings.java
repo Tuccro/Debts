@@ -12,16 +12,27 @@ public interface IDBStrings {
 
     String DB_TABLE_ID = "_id";
 
-    String DB_PEOPLE_ID = "_id";
+    String DB_PEOPLE_ID = DB_TABLE_ID;
     String DB_PEOPLE_NAME = "name";
     String DB_PEOPLE_PHONE = "phone";
     String DB_PEOPLE_DATE_OF_CREATE = "date_of_create";
+
+    String DB_MONEY_ID = DB_TABLE_ID;
+    String DB_MONEY_HUMAN_ID = "people_id";
+    String DB_MONEY_CURRENCY_ID = "currency_id";
+    String DB_MONEY_SUM = "sum";
+    String DB_MONEY_NOTE = "note";
+    String DB_MONEY_DATE_ADD = "date_add";
+    String DB_MONEY_DATE_BEGIN = "date_begin";
+    String DB_MONEY_DATE_END = "date_end";
+    String DB_MONEY_STATUS_ID = "status_id";
+
 
     String DB_CREATE_TABLE_PEOPLE = "CREATE TABLE `people` (\n" +
             "\t`_id`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +
             "\t`name`\tTEXT NOT NULL UNIQUE,\n" +
             "\t`phone`\tTEXT,\n" +
-            "\t`date_of_create`\tTEXT NOT NULL,\n" +
+            "\t`date_of_create`\tINTEGER NOT NULL,\n" +
             "\t`visible`\tINTEGER NOT NULL\n" +
             ");";
 
@@ -31,9 +42,9 @@ public interface IDBStrings {
             "\t`currency_id`\tINTEGER NOT NULL,\n" +
             "\t`sum`\tREAL NOT NULL,\n" +
             "\t`note`\tTEXT,\n" +
-            "\t`date_add`\tTEXT NOT NULL,\n" +
-            "\t`date_begin`\tTEXT,\n" +
-            "\t`date_end`\tTEXT,\n" +
+            "\t`date_add`\tINTEGER NOT NULL,\n" +
+            "\t`date_begin`\tINTEGER,\n" +
+            "\t`date_end`\tINTEGER,\n" +
             "\t`status_id`\tINTEGER NOT NULL,\n" +
             "\t`visible`\tINTEGER NOT NULL,\n" +
             "\tFOREIGN KEY (people_id) REFERENCES people(_id) ON DELETE CASCADE,\n" +
