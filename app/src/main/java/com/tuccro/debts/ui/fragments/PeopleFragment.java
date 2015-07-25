@@ -53,7 +53,6 @@ public class PeopleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_people, container, false);
 
         listView = (ListView) view.findViewById(R.id.list_people);
-        listView.setBackgroundColor(R.color.Black);
 
         init();
 
