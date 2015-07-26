@@ -37,7 +37,8 @@ public class HumanAddDialog extends AlertDialog {
                 DB db = new DB(context);
                 db.open();
 
-                db.addHuman(etName.getText().toString(), etPhone.getText().toString());
+                db.addHuman(etName.getText().toString(), etPhone.getText().toString(),
+                        System.currentTimeMillis());
                 db.close();
 
                 PeopleFragment.getInstance().init();

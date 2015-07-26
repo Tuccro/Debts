@@ -9,7 +9,7 @@ import com.tuccro.debts.db.IDBStrings;
 
 import java.util.ArrayList;
 
-public class Utils implements IDBStrings {
+public abstract class dbUtils implements IDBStrings {
 
     public static ArrayList<Human> getPeopleFromDbCursor(Cursor cursor) {
         ArrayList<Human> people = new ArrayList<>();
@@ -17,14 +17,18 @@ public class Utils implements IDBStrings {
         int id;
         String name;
         String phone;
-        String dateAdd;
+        long dateAdd;
+
 
         cursor.moveToFirst();
+
+        if (cursor.getCount() == 0) return people;
+
         do {
             id = cursor.getInt(cursor.getColumnIndex(DB_PEOPLE_ID));
             name = cursor.getString(cursor.getColumnIndex(DB_PEOPLE_NAME));
             phone = cursor.getString(cursor.getColumnIndex(DB_PEOPLE_PHONE));
-            dateAdd = cursor.getString(cursor.getColumnIndex(DB_PEOPLE_DATE_OF_CREATE));
+            dateAdd = cursor.getLong(cursor.getColumnIndex(DB_PEOPLE_DATE_OF_CREATE));
 
             people.add(new Human(id, name, phone, dateAdd));
 

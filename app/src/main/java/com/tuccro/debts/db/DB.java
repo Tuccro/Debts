@@ -24,11 +24,11 @@ public class DB implements IDBStrings {
         if (dbHelper != null) dbHelper.close();
     }
 
-    public void addHuman(String name, String phone) {
+    public void addHuman(String name, String phone, long date) {
         ContentValues cv = new ContentValues();
         cv.put("name", name);
         cv.put("phone", phone);
-        cv.put("date_of_create", 1231564);
+        cv.put("date_of_create", date);
         cv.put("visible", 1);
 
         db.insert(DB_TABLE_PEOPLE, null, cv);

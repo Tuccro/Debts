@@ -5,9 +5,9 @@ public class Human {
     private int id;
     private String name;
     private String phone;
-    private String dateAdd;
+    private long dateAdd;
 
-    public Human(int id, String name, String phone, String dateAdd) {
+    public Human(int id, String name, String phone, long dateAdd) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -38,11 +38,11 @@ public class Human {
         this.phone = phone;
     }
 
-    public String getDateAdd() {
+    public long getDateAdd() {
         return dateAdd;
     }
 
-    public void setDateAdd(String dateAdd) {
+    public void setDateAdd(long dateAdd) {
         this.dateAdd = dateAdd;
     }
 }

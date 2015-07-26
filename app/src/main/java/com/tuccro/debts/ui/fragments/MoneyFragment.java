@@ -15,7 +15,7 @@ import com.tuccro.debts.core.Money;
 import com.tuccro.debts.db.DB;
 import com.tuccro.debts.ui.adapters.MoneyAdapter;
 import com.tuccro.debts.ui.dialogs.MoneyAddDialog;
-import com.tuccro.debts.utils.Utils;
+import com.tuccro.debts.utils.dbUtils;
 
 import java.util.ArrayList;
 
@@ -71,7 +71,7 @@ public class MoneyFragment extends Fragment {
     public void init() {
         DB db = new DB(getActivity().getApplicationContext());
         db.open();
-        moneyList = Utils.getMoneyFromDbCursor(db.getAllMoney());
+        moneyList = dbUtils.getMoneyFromDbCursor(db.getAllMoney());
         db.close();
 
         listView.setAdapter(new MoneyAdapter(getActivity().getApplicationContext(), moneyList));

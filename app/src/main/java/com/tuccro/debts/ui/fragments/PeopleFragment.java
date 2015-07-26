@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
@@ -15,7 +16,8 @@ import com.tuccro.debts.core.Human;
 import com.tuccro.debts.db.DB;
 import com.tuccro.debts.ui.adapters.PeopleAdapter;
 import com.tuccro.debts.ui.dialogs.HumanAddDialog;
-import com.tuccro.debts.utils.Utils;
+import com.tuccro.debts.ui.dialogs.HumanInfoDialog;
+import com.tuccro.debts.utils.dbUtils;
 
 import java.util.ArrayList;
 
@@ -64,13 +66,23 @@ public class PeopleFragment extends Fragment {
                 humanAddDialog.show();
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Human human = (Human) parent.getItemAtPosition(position);
+
+                HumanInfoDialog dialog = new HumanInfoDialog(getActivity(), human);
+                dialog.show();
+            }
+        });
         return view;
     }
 
     public void init() {
         DB db = new DB(getActivity().getApplicationContext());
         db.open();
-        peopleList = Utils.getPeopleFromDbCursor(db.getAllPeople());
+        peopleList = dbUtils.getPeopleFromDbCursor(db.getAllPeople());
         db.close();
 
         listView.setAdapter(new PeopleAdapter(getActivity().getApplicationContext(), peopleList));

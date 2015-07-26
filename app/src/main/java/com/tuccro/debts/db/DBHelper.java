@@ -29,6 +29,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBStrings {
         db.execSQL(DB_INSERT_CURRENCY_VALUES);
         db.execSQL(DB_INSERT_STATUS_VALUES);
 
-        db.execSQL(DB_INSERT_PEOPLE);
+//        db.execSQL(DB_INSERT_PEOPLE);
     }
 }
