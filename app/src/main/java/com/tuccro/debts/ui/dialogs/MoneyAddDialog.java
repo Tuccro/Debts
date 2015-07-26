@@ -5,16 +5,16 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.tuccro.debts.R;
 import com.tuccro.debts.core.Human;
-import com.tuccro.debts.db.DB;
-import com.tuccro.debts.utils.Utils;
+import com.tuccro.debts.ui.fragments.PeopleFragment;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,11 @@ import java.util.ArrayList;
 public class MoneyAddDialog extends AlertDialog {
 
     Context context;
+
+    ArrayList<Human> peopleArray;
     Spinner sPeople;
+
+
     Spinner sCurrency;
 
     public MoneyAddDialog(Context context) {
@@ -52,10 +56,7 @@ public class MoneyAddDialog extends AlertDialog {
     }
 
     private void initFields() {
-        DB db = new DB(context);
-        db.open();
-        ArrayList<Human> peopleArray = Utils.getPeopleFromDbCursor(db.getAllPeople());
-        db.close();
+        peopleArray = PeopleFragment.getInstance().getPeopleList();
 
         int numberOfPeople = peopleArray.size();
 
@@ -63,12 +64,27 @@ public class MoneyAddDialog extends AlertDialog {
 
         for (int i = 0; i < numberOfPeople; i++) {
             peopleNames[i] = peopleArray.get(i).getName();
-            Log.e("NAME", peopleNames[i]);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, peopleNames);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
+                android.R.layout.simple_spinner_item, peopleNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         sPeople.setAdapter(adapter);
+
+        sPeople.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(context, "Selected " + String.valueOf(position),
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(context, "Selected nothing",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

@@ -7,10 +7,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
 import com.tuccro.debts.R;
+import com.tuccro.debts.core.Money;
+import com.tuccro.debts.db.DB;
+import com.tuccro.debts.ui.adapters.MoneyAdapter;
 import com.tuccro.debts.ui.dialogs.MoneyAddDialog;
+import com.tuccro.debts.utils.Utils;
+
+import java.util.ArrayList;
 
 
 /**
@@ -24,6 +31,10 @@ public class MoneyFragment extends Fragment {
     private OnMoneyFragmentInteractionListener mListener;
     static MoneyFragment fragment;
     FloatingActionButton buttonAddEntry;
+
+    private ListView listView;
+
+    private ArrayList<Money> moneyList;
 
     public MoneyFragment() {
         // Required empty public constructor
@@ -43,6 +54,7 @@ public class MoneyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_money, container, false);
 
         buttonAddEntry = (FloatingActionButton) view.findViewById(R.id.bt_add_money);
+        listView = (ListView) view.findViewById(R.id.list_money);
 
         buttonAddEntry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +66,15 @@ public class MoneyFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public void init() {
+        DB db = new DB(getActivity().getApplicationContext());
+        db.open();
+        moneyList = Utils.getMoneyFromDbCursor(db.getAllMoney());
+        db.close();
+
+        listView.setAdapter(new MoneyAdapter(getActivity().getApplicationContext(), moneyList));
     }
 
     // TODO: Rename method, update argument and hook method into UI event

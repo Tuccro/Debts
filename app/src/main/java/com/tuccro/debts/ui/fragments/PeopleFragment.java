@@ -31,7 +31,8 @@ public class PeopleFragment extends Fragment {
     static PeopleFragment fragment;
     private FloatingActionButton buttonAddHuman;
 
-    ListView listView;
+    private ListView listView;
+    private ArrayList<Human> peopleList;
 
     public PeopleFragment() {
         // Required empty public constructor
@@ -42,10 +43,8 @@ public class PeopleFragment extends Fragment {
         if (fragment == null) {
             fragment = new PeopleFragment();
         }
-
         return fragment;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,10 +70,14 @@ public class PeopleFragment extends Fragment {
     public void init() {
         DB db = new DB(getActivity().getApplicationContext());
         db.open();
-        ArrayList<Human> people = Utils.getPeopleFromDbCursor(db.getAllPeople());
+        peopleList = Utils.getPeopleFromDbCursor(db.getAllPeople());
         db.close();
 
-        listView.setAdapter(new PeopleAdapter(getActivity().getApplicationContext(), people));
+        listView.setAdapter(new PeopleAdapter(getActivity().getApplicationContext(), peopleList));
+    }
+
+    public ArrayList<Human> getPeopleList() {
+        return peopleList;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
