@@ -10,11 +10,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="HELLO WORLD" />
-
         <Spinner
             android:id="@+id/spinner_people"
             android:layout_width="match_parent"

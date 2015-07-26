@@ -69,7 +69,8 @@ public interface IDBStrings {
     String DB_INSERT_STATUS_VALUES = "INSERT INTO `status`(`name`) \n" +
             "VALUES ('new'), ('active'), ('archive'), ('deleted');";
 
-    String DB_INSERT_PEOPLE = "INSERT INTO `people`(`name`,`phone`,`date_of_create`,`visible`) VALUES ('Alex',380504445521,'15.05.15',1)," +
+    String DB_INSERT_PEOPLE = "INSERT INTO `people`(`name`,`phone`,`date_of_create`,`visible`) " +
+            "VALUES ('Alex',380504445521,'15.05.15',1)," +
             "('Max',380674445521,'14.05.15',1);";
 
 }
