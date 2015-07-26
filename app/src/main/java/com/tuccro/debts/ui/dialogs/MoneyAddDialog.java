@@ -74,7 +74,7 @@ public class MoneyAddDialog extends AlertDialog {
 
         currenciesArray = Data.getInstance(context).getCurrencies();
 
-        int numberOfCurrencies = peopleArray.size();
+        int numberOfCurrencies = currenciesArray.size();
 
         String[] currenciesNames = new String[numberOfCurrencies];
 
