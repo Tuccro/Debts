@@ -25,7 +25,6 @@ public interface IDBStrings {
     String DB_MONEY_DATE_ADD = "date_add";
     String DB_MONEY_DATE_BEGIN = "date_begin";
     String DB_MONEY_DATE_END = "date_end";
-    String DB_MONEY_STATUS_ID = "status_id";
 
 
     String DB_CREATE_TABLE_PEOPLE = "CREATE TABLE `people` (\n" +
@@ -45,11 +44,9 @@ public interface IDBStrings {
             "\t`date_add`\tINTEGER NOT NULL,\n" +
             "\t`date_begin`\tINTEGER,\n" +
             "\t`date_end`\tINTEGER,\n" +
-            "\t`status_id`\tINTEGER NOT NULL,\n" +
             "\t`visible`\tINTEGER NOT NULL,\n" +
             "\tFOREIGN KEY (people_id) REFERENCES people(_id) ON DELETE CASCADE,\n" +
             "\tFOREIGN KEY (currency_id) REFERENCES currency(_id) ON DELETE CASCADE,\n" +
-            "\tFOREIGN KEY (status_id) REFERENCES status(_id)\n" +
             ");";
 
     String DB_CREATE_TABLE_CURRENCY = "CREATE TABLE `currency` (\n" +

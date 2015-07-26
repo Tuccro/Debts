@@ -10,9 +10,8 @@ public class Money {
     long dateAdd;
     long dateBegin;
     long dateEnd;
-    int idStatus;
 
-    public Money(int id, int idHuman, int idCurrency, double sum, String note, long dateAdd, long dateBegin, long dateEnd, int idStatus) {
+    public Money(int id, int idHuman, int idCurrency, double sum, String note, long dateAdd, long dateBegin, long dateEnd) {
         this.id = id;
         this.idHuman = idHuman;
         this.idCurrency = idCurrency;
@@ -21,11 +20,9 @@ public class Money {
         this.dateAdd = dateAdd;
         this.dateBegin = dateBegin;
         this.dateEnd = dateEnd;
-        this.idStatus = idStatus;
     }
 
-    public Money(int idStatus, long dateBegin, long dateAdd, String note, double sum, int idCurrency, int idHuman, int id) {
-        this.idStatus = idStatus;
+    public Money(int id, int idHuman, int idCurrency, double sum, String note, long dateAdd, long dateBegin) {
         this.dateBegin = dateBegin;
         this.dateAdd = dateAdd;
         this.note = note;
@@ -97,13 +94,5 @@ public class Money {
 
     public void setDateEnd(long dateEnd) {
         this.dateEnd = dateEnd;
-    }
-
-    public int getIdStatus() {
-        return idStatus;
-    }
-
-    public void setIdStatus(int idStatus) {
-        this.idStatus = idStatus;
     }
 }

@@ -56,5 +56,13 @@ public class DB implements IDBStrings {
     public Cursor getAllMoney() {
         return db.query(DB_TABLE_MONEY, null, null, null, null, null, "name");
     }
+
+    public Cursor getAllCurrencies() {
+        return db.query(DB_TABLE_CURRENCY, null, null, null, null, null, "name");
+    }
+
+    public Cursor getAllStatuses() {
+        return db.query(DB_TABLE_STATUS, null, null, null, null, null, "name");
+    }
 }
 
