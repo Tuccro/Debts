@@ -38,7 +38,7 @@ public class MoneyAddDialog extends AlertDialog {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_money_add, null);
 
-        this.setTitle("Title");
+//        this.setTitle("Title");
         this.setView(view);
 
         sPeople = (Spinner) view.findViewById(R.id.spinner_people);
@@ -70,7 +70,6 @@ public class MoneyAddDialog extends AlertDialog {
                 android.R.layout.simple_spinner_item, peopleNames);
 
         sPeople.setAdapter(peopleAdapter);
-
 
         currenciesArray = Data.getInstance(context).getCurrencies();
 

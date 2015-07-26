@@ -69,5 +69,4 @@ public interface IDBStrings {
     String DB_INSERT_PEOPLE = "INSERT INTO `people`(`name`,`phone`,`date_of_create`,`visible`) " +
             "VALUES ('Alex',380504445521,'15.05.15',1)," +
             "('Max',380674445521,'14.05.15',1);";
-
 }
