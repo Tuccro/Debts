@@ -46,7 +46,7 @@ public interface IDBStrings {
             "\t`date_end`\tINTEGER,\n" +
             "\t`visible`\tINTEGER NOT NULL,\n" +
             "\tFOREIGN KEY (people_id) REFERENCES people(_id) ON DELETE CASCADE,\n" +
-            "\tFOREIGN KEY (currency_id) REFERENCES currency(_id) ON DELETE CASCADE,\n" +
+            "\tFOREIGN KEY (currency_id) REFERENCES currency(_id) ON DELETE CASCADE\n" +
             ");";
 
     String DB_CREATE_TABLE_CURRENCY = "CREATE TABLE `currency` (\n" +
