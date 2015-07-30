@@ -8,6 +8,9 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.tuccro.debts.R;
@@ -15,6 +18,7 @@ import com.tuccro.debts.core.Human;
 import com.tuccro.debts.core.Item;
 import com.tuccro.debts.data.Data;
 import com.tuccro.debts.ui.fragments.PeopleFragment;
+import com.tuccro.debts.utils.timeUtils;
 
 import java.util.ArrayList;
 
@@ -31,9 +35,24 @@ public class MoneyAddDialog extends AlertDialog {
     Spinner sPeople;
     Spinner sCurrency;
 
+    EditText etSum;
+    EditText etNote;
+    EditText etDateBegin;
+    EditText etDateEnd;
+
+    RadioGroup rgWhoIs;
+    RadioButton rbHe;
+    RadioButton rbMe;
+
+    long dateAdd;
+    long dateBegin;
+    long dateEnd;
+
     public MoneyAddDialog(Context context) {
         super(context);
         this.context = context;
+
+        dateBegin = System.currentTimeMillis();
 
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_money_add, null);
@@ -43,6 +62,15 @@ public class MoneyAddDialog extends AlertDialog {
 
         sPeople = (Spinner) view.findViewById(R.id.spinner_people);
         sCurrency = (Spinner) view.findViewById(R.id.spinner_currency);
+
+        etSum = (EditText) view.findViewById(R.id.et_sum);
+        etNote = (EditText) view.findViewById(R.id.et_note);
+        etDateBegin = (EditText) view.findViewById(R.id.et_date_begin);
+        etDateEnd = (EditText) view.findViewById(R.id.et_date_end);
+
+        rgWhoIs = (RadioGroup) view.findViewById(R.id.rg_whois);
+        rbHe = (RadioButton) view.findViewById(R.id.rb_he);
+        rbMe = (RadioButton) view.findViewById(R.id.rb_me);
 
         initFields();
 
@@ -86,6 +114,7 @@ public class MoneyAddDialog extends AlertDialog {
 
         sCurrency.setAdapter(currenciesAdapter);
 
+        setDateView(etDateBegin, dateBegin);
 
 //        sPeople.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
@@ -98,4 +127,7 @@ public class MoneyAddDialog extends AlertDialog {
 //        });
     }
 
+    private void setDateView(EditText editText, long date) {
+        editText.setText(timeUtils.getDateFromMillis(date));
+    }
 }

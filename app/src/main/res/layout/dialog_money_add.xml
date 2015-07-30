@@ -16,15 +16,18 @@
             android:layout_height="wrap_content" />
 
         <RadioGroup
+            android:id="@+id/rg_whois"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
+                android:id="@+id/rb_he"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="He owes" />
 
             <RadioButton
+                android:id="@+id/rb_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I owe" />
@@ -37,6 +40,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/et_sum"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -50,6 +54,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/et_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="false" />
@@ -66,9 +71,11 @@
                 android:text="Begin" />
 
             <EditText
+                android:id="@+id/et_date_begin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:editable="false" />
 
             <Button
                 android:layout_width="0dp"
@@ -90,9 +97,11 @@
                 android:text="End" />
 
             <EditText
+                android:id="@+id/et_date_end"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:editable="false" />
 
             <Button
                 android:layout_width="0dp"
