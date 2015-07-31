@@ -80,7 +80,6 @@ public class MoneyAddDialog extends AlertDialog {
 
             }
         });
-
     }
 
     private void initFields() {
