@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -48,7 +49,9 @@ public class MoneyAddDialog extends AlertDialog {
     long dateBegin;
     long dateEnd;
 
-    public MoneyAddDialog(Context context) {
+    double sum;
+
+    public MoneyAddDialog(final Context context) {
         super(context);
         this.context = context;
 
@@ -78,6 +81,20 @@ public class MoneyAddDialog extends AlertDialog {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+            }
+        });
+
+        etSum.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                EditText et = (EditText) v;
+                String numberText = et.getText().toString();
+
+                if (!numberText.isEmpty()) {
+                    sum = Double.parseDouble(numberText);
+                } else sum = 0;
+                return false;
             }
         });
     }
