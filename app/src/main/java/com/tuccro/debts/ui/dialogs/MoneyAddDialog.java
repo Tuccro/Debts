@@ -1,14 +1,16 @@
 package com.tuccro.debts.ui.dialogs;
 
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -50,6 +52,7 @@ public class MoneyAddDialog extends AlertDialog {
     long dateEnd;
 
     double sum;
+    String note;
 
     public MoneyAddDialog(final Context context) {
         super(context);
@@ -84,6 +87,13 @@ public class MoneyAddDialog extends AlertDialog {
             }
         });
 
+        this.setButton(AlertDialog.BUTTON_POSITIVE, "YES", new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
         etSum.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -91,10 +101,30 @@ public class MoneyAddDialog extends AlertDialog {
                 EditText et = (EditText) v;
                 String numberText = et.getText().toString();
 
-                if (!numberText.isEmpty()) {
-                    sum = Double.parseDouble(numberText);
-                } else sum = 0;
+                sum = (numberText.isEmpty()) ? 0 : Double.parseDouble(numberText);
                 return false;
+            }
+        });
+
+        etNote.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                note = ((EditText) v).getText().toString();
+                return false;
+            }
+        });
+
+        etDateBegin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                    }
+                }, 2015, 12, 15);
+
+                datePickerDialog.show();
             }
         });
     }
