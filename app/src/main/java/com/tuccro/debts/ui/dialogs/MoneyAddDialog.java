@@ -171,6 +171,8 @@ public class MoneyAddDialog extends AlertDialog {
 //            public void onNothingSelected(AdapterView<?> parent) {
 //            }
 //        });
+
+        rgWhoIs.check(rbHe.getId());
     }
 
     private void setDateView(EditText editText, long date) {
