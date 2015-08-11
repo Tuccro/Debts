@@ -24,6 +24,7 @@ import com.tuccro.debts.ui.fragments.PeopleFragment;
 import com.tuccro.debts.utils.timeUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -121,6 +122,10 @@ public class MoneyAddDialog extends AlertDialog {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
+                        // TODO: 8/11/2015 add actual date method
+                        Date date = new Date(year - 1900, monthOfYear, dayOfMonth);
+                        dateBegin = date.getTime();
+                        initFields();
                     }
                 }, 2015, 12, 15);
 
