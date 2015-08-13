@@ -24,6 +24,7 @@ import com.tuccro.debts.ui.fragments.PeopleFragment;
 import com.tuccro.debts.utils.timeUtils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -118,6 +119,7 @@ public class MoneyAddDialog extends AlertDialog {
         etDateBegin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -127,7 +129,7 @@ public class MoneyAddDialog extends AlertDialog {
                         dateBegin = date.getTime();
                         initFields();
                     }
-                }, 2015, 12, 15);
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
                 datePickerDialog.show();
             }
