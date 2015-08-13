@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -55,6 +56,9 @@ public class MoneyAddDialog extends AlertDialog {
     double sum;
     String note;
 
+    Button btDateBeginChange;
+    Button btDateEndChange;
+
     public MoneyAddDialog(final Context context) {
         super(context);
         this.context = context;
@@ -77,6 +81,9 @@ public class MoneyAddDialog extends AlertDialog {
         rgWhoIs = (RadioGroup) view.findViewById(R.id.rg_whois);
         rbHe = (RadioButton) view.findViewById(R.id.rb_he);
         rbMe = (RadioButton) view.findViewById(R.id.rb_me);
+
+        btDateBeginChange = (Button) view.findViewById(R.id.bt_date_begin_change);
+        btDateEndChange = (Button) view.findViewById(R.id.bt_date_end_change);
 
         initFields();
 
@@ -114,7 +121,8 @@ public class MoneyAddDialog extends AlertDialog {
             }
         });
 
-        etDateBegin.setOnClickListener(onClickDateChanger);
+        btDateBeginChange.setOnClickListener(onClickDateChanger);
+        btDateEndChange.setOnClickListener(onClickDateChanger);
 
     }
 
@@ -126,11 +134,12 @@ public class MoneyAddDialog extends AlertDialog {
             final Calendar calendar = Calendar.getInstance();
 
             switch (v.getId()) {
-                case R.id.et_date_begin:
+                case R.id.bt_date_begin_change:
                     calendar.setTimeInMillis(dateBegin);
                     break;
-                case R.id.et_date_end:
-                    calendar.setTimeInMillis(dateEnd);
+                case R.id.bt_date_end_change:
+                    if (dateEnd != 0) calendar.setTimeInMillis(dateEnd);
+                    else calendar.setTimeInMillis(dateBegin);
                     break;
             }
 
@@ -141,10 +150,10 @@ public class MoneyAddDialog extends AlertDialog {
                     calendar.set(year, monthOfYear, dayOfMonth);
 
                     switch (v.getId()) {
-                        case R.id.et_date_begin:
+                        case R.id.bt_date_begin_change:
                             dateBegin = calendar.getTimeInMillis();
                             break;
-                        case R.id.et_date_end:
+                        case R.id.bt_date_end_change:
                             dateEnd = calendar.getTimeInMillis();
                             break;
                     }
@@ -152,6 +161,8 @@ public class MoneyAddDialog extends AlertDialog {
                 }
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
+            datePickerDialog.setCancelable(true);
+            datePickerDialog.setCanceledOnTouchOutside(true);
             datePickerDialog.show();
         }
     };
@@ -188,6 +199,7 @@ public class MoneyAddDialog extends AlertDialog {
         sCurrency.setAdapter(currenciesAdapter);
 
         setDateView(etDateBegin, dateBegin);
+        if (dateEnd != 0) setDateView(etDateEnd, dateEnd);
 
 //        sPeople.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override

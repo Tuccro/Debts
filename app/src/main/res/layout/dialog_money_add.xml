@@ -79,6 +79,7 @@
                 android:editable="false" />
 
             <Button
+                android:id="@+id/bt_date_begin_change"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -105,6 +106,7 @@
                 android:editable="false" />
 
             <Button
+                android:id="@+id/bt_date_end_change"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
