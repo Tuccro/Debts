@@ -25,7 +25,6 @@ import com.tuccro.debts.utils.timeUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,7 +64,6 @@ public class MoneyAddDialog extends AlertDialog {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_money_add, null);
 
-//        this.setTitle("Title");
         this.setView(view);
 
         sPeople = (Spinner) view.findViewById(R.id.spinner_people);
@@ -116,25 +114,47 @@ public class MoneyAddDialog extends AlertDialog {
             }
         });
 
-        etDateBegin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        etDateBegin.setOnClickListener(onClickDateChanger);
 
-                        // TODO: 8/11/2015 add actual date method
-                        Date date = new Date(year - 1900, monthOfYear, dayOfMonth);
-                        dateBegin = date.getTime();
-                        initFields();
-                    }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
-                datePickerDialog.show();
-            }
-        });
     }
+
+    View.OnClickListener onClickDateChanger = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            final View v = view;
+            final Calendar calendar = Calendar.getInstance();
+
+            switch (v.getId()) {
+                case R.id.et_date_begin:
+                    calendar.setTimeInMillis(dateBegin);
+                    break;
+                case R.id.et_date_end:
+                    calendar.setTimeInMillis(dateEnd);
+                    break;
+            }
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                    calendar.set(year, monthOfYear, dayOfMonth);
+
+                    switch (v.getId()) {
+                        case R.id.et_date_begin:
+                            dateBegin = calendar.getTimeInMillis();
+                            break;
+                        case R.id.et_date_end:
+                            dateEnd = calendar.getTimeInMillis();
+                            break;
+                    }
+                    initFields();
+                }
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+
+            datePickerDialog.show();
+        }
+    };
 
     private void initFields() {
         peopleArray = PeopleFragment.getInstance().getPeopleList();
