@@ -51,7 +51,7 @@ public class MoneyAddDialog extends AlertDialog {
 
     long dateAdd;
     long dateBegin;
-    long dateEnd;
+    long dateEnd = 0;
 
     double sum;
     String note;
@@ -65,26 +65,7 @@ public class MoneyAddDialog extends AlertDialog {
 
         dateBegin = System.currentTimeMillis();
 
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_money_add, null);
-
-        this.setView(view);
-
-        sPeople = (Spinner) view.findViewById(R.id.spinner_people);
-        sCurrency = (Spinner) view.findViewById(R.id.spinner_currency);
-
-        etSum = (EditText) view.findViewById(R.id.et_sum);
-        etNote = (EditText) view.findViewById(R.id.et_note);
-        etDateBegin = (EditText) view.findViewById(R.id.et_date_begin);
-        etDateEnd = (EditText) view.findViewById(R.id.et_date_end);
-
-        rgWhoIs = (RadioGroup) view.findViewById(R.id.rg_whois);
-        rbHe = (RadioButton) view.findViewById(R.id.rb_he);
-        rbMe = (RadioButton) view.findViewById(R.id.rb_me);
-
-        btDateBeginChange = (Button) view.findViewById(R.id.bt_date_begin_change);
-        btDateEndChange = (Button) view.findViewById(R.id.bt_date_end_change);
-
+        initViews();
         initFields();
 
         this.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", new OnClickListener() {
@@ -113,17 +94,8 @@ public class MoneyAddDialog extends AlertDialog {
             }
         });
 
-        etNote.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                note = ((EditText) v).getText().toString();
-                return false;
-            }
-        });
-
         btDateBeginChange.setOnClickListener(onClickDateChanger);
         btDateEndChange.setOnClickListener(onClickDateChanger);
-
     }
 
     View.OnClickListener onClickDateChanger = new View.OnClickListener() {
@@ -166,6 +138,28 @@ public class MoneyAddDialog extends AlertDialog {
             datePickerDialog.show();
         }
     };
+
+    private void initViews() {
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_money_add, null);
+
+        this.setView(view);
+
+        sPeople = (Spinner) view.findViewById(R.id.spinner_people);
+        sCurrency = (Spinner) view.findViewById(R.id.spinner_currency);
+
+        etSum = (EditText) view.findViewById(R.id.et_sum);
+        etNote = (EditText) view.findViewById(R.id.et_note);
+        etDateBegin = (EditText) view.findViewById(R.id.et_date_begin);
+        etDateEnd = (EditText) view.findViewById(R.id.et_date_end);
+
+        rgWhoIs = (RadioGroup) view.findViewById(R.id.rg_whois);
+        rbHe = (RadioButton) view.findViewById(R.id.rb_he);
+        rbMe = (RadioButton) view.findViewById(R.id.rb_me);
+
+        btDateBeginChange = (Button) view.findViewById(R.id.bt_date_begin_change);
+        btDateEndChange = (Button) view.findViewById(R.id.bt_date_end_change);
+    }
 
     private void initFields() {
         peopleArray = PeopleFragment.getInstance().getPeopleList();
@@ -213,6 +207,10 @@ public class MoneyAddDialog extends AlertDialog {
 
         rgWhoIs.check(rbHe.getId());
     }
+
+//    private boolean isFieldsFilled() {
+//
+//    }
 
     private void setDateView(EditText editText, long date) {
         editText.setText(timeUtils.getDateFromMillis(date));
