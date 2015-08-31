@@ -56,6 +56,8 @@ public class MoneyFragment extends Fragment {
         buttonAddEntry = (FloatingActionButton) view.findViewById(R.id.bt_add_money);
         listView = (ListView) view.findViewById(R.id.list_money);
 
+        init();
+
         buttonAddEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

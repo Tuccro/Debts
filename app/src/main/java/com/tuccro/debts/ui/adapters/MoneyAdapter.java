@@ -27,17 +27,17 @@ public class MoneyAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return list.size();
     }
 
     @Override
     public Money getItem(int position) {
-        return null;
+        return list.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return list.get(position).getId();
     }
 
     @Override
@@ -49,8 +49,8 @@ public class MoneyAdapter extends BaseAdapter {
 
         Money money = getItem(position);
 
-        ((TextView) view.findViewById(R.id.text_name)).setText(money.getIdHuman());
-        ((TextView) view.findViewById(R.id.text_sum)).setText("50");    // dummy sum
+        ((TextView) view.findViewById(R.id.text_name)).setText(money.getNote());
+        ((TextView) view.findViewById(R.id.text_sum)).setText(String.valueOf(money.getSum()));    // dummy sum
 
         return view;
     }

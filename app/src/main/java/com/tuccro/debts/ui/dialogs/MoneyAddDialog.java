@@ -21,6 +21,8 @@ import com.tuccro.debts.R;
 import com.tuccro.debts.core.Human;
 import com.tuccro.debts.core.Item;
 import com.tuccro.debts.data.Data;
+import com.tuccro.debts.db.DB;
+import com.tuccro.debts.ui.fragments.MoneyFragment;
 import com.tuccro.debts.ui.fragments.PeopleFragment;
 import com.tuccro.debts.utils.timeUtils;
 
@@ -78,7 +80,23 @@ public class MoneyAddDialog extends AlertDialog {
         this.setButton(AlertDialog.BUTTON_POSITIVE, "YES", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                if (isRequiredFieldsFilled()) {
+                    DB db = new DB(context);
+                    db.open();
 
+                    db.addMoney(peopleArray.get(sPeople.getSelectedItemPosition() - 1).getId(),
+                            currenciesArray.get(sCurrency.getSelectedItemPosition()).getId(),
+                            sum,
+                            etNote.getText().toString(),
+                            dateAdd,
+                            dateBegin,
+                            dateEnd,
+                            1);
+
+                    db.close();
+
+                    MoneyFragment.getInstance().init();
+                }
             }
         });
 
@@ -162,12 +180,13 @@ public class MoneyAddDialog extends AlertDialog {
     }
 
     private void initFields() {
+
         peopleArray = PeopleFragment.getInstance().getPeopleList();
 
         int numberOfPeople = peopleArray.size();
 
-        String[] peopleNames = new String[numberOfPeople + 1];
-        peopleNames[0] = context.getString(R.string.whois);
+        String[] peopleNames = new String[numberOfPeople + 1];  // one item for nothing change
+        peopleNames[0] = context.getString(R.string.whois);     // adding "nothing" item
 
         for (int i = 1; i <= numberOfPeople; i++) {
             peopleNames[i] = peopleArray.get(i - 1).getName();
@@ -196,22 +215,14 @@ public class MoneyAddDialog extends AlertDialog {
         setDateView(etDateBegin, dateBegin);
         if (dateEnd != 0) setDateView(etDateEnd, dateEnd);
 
-//        sPeople.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
-
         rgWhoIs.check(rbHe.getId());
     }
 
-//    private boolean isFieldsFilled() {
-//
-//    }
+    private boolean isRequiredFieldsFilled() {
+        if (sPeople.getSelectedItemPosition() > 0
+                && sum > 0) return true;
+        else return false;
+    }
 
     private void setDateView(EditText editText, long date) {
         editText.setText(timeUtils.getDateFromMillis(date));

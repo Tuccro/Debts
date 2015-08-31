@@ -45,6 +45,7 @@ public class DB implements IDBStrings {
         cv.put("date_add", date_add);
         cv.put("date_begin", date_begin);
         cv.put("date_end", date_end);
+        cv.put("visible", 1);
 
         db.insert(DB_TABLE_MONEY, null, cv);
     }
@@ -54,7 +55,7 @@ public class DB implements IDBStrings {
     }
 
     public Cursor getAllMoney() {
-        return db.query(DB_TABLE_MONEY, null, null, null, null, null, "name");
+        return db.query(DB_TABLE_MONEY, null, null, null, null, null, "date_add");
     }
 
     public Cursor getAllCurrencies() {
