@@ -166,10 +166,11 @@ public class MoneyAddDialog extends AlertDialog {
 
         int numberOfPeople = peopleArray.size();
 
-        String[] peopleNames = new String[numberOfPeople];
+        String[] peopleNames = new String[numberOfPeople + 1];
+        peopleNames[0] = context.getString(R.string.whois);
 
-        for (int i = 0; i < numberOfPeople; i++) {
-            peopleNames[i] = peopleArray.get(i).getName();
+        for (int i = 1; i <= numberOfPeople; i++) {
+            peopleNames[i] = peopleArray.get(i - 1).getName();
         }
 
         ArrayAdapter<String> peopleAdapter = new ArrayAdapter<String>(context,
