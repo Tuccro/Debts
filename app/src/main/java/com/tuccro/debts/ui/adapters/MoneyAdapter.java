@@ -49,9 +49,22 @@ public class MoneyAdapter extends BaseAdapter {
 
         Money money = getItem(position);
 
-        ((TextView) view.findViewById(R.id.text_name)).setText(money.getNote());
-        ((TextView) view.findViewById(R.id.text_sum)).setText(String.valueOf(money.getSum()));    // dummy sum
+        TextView tvNote = (TextView) view.findViewById(R.id.text_name);
+        TextView tvSum = (TextView) view.findViewById(R.id.text_sum);
+        TextView tvWhoIs = (TextView) view.findViewById(R.id.text_whois);
 
+        if (money.getNote().isEmpty()) money.setNote("<no description>");
+
+        tvNote.setText(money.getNote());
+
+        if (money.getSum() < 0) {
+            money.setSum(money.getSum() * -1);
+            tvSum.setTextColor(context.getResources().getColor(R.color.DarkRed));
+        } else {
+            tvSum.setTextColor(context.getResources().getColor(R.color.DarkGreen));
+        }
+
+        tvSum.setText(String.valueOf(money.getSum()));
         return view;
     }
 }

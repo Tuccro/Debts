@@ -35,7 +35,7 @@ public class DB implements IDBStrings {
     }
 
     public void addMoney(int human_id, int currency_id, double sum, String note, long date_add,
-                         long date_begin, long date_end, int status_id) {
+                         long date_begin, long date_end) {
         ContentValues cv = new ContentValues();
         cv.put("people_id", human_id);
         cv.put("currency_id", currency_id);

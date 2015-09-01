@@ -84,14 +84,15 @@ public class MoneyAddDialog extends AlertDialog {
                     DB db = new DB(context);
                     db.open();
 
+                    if (rbMe.isChecked()) sum *= -1;
+
                     db.addMoney(peopleArray.get(sPeople.getSelectedItemPosition() - 1).getId(),
                             currenciesArray.get(sCurrency.getSelectedItemPosition()).getId(),
                             sum,
                             etNote.getText().toString(),
                             dateAdd,
                             dateBegin,
-                            dateEnd,
-                            1);
+                            dateEnd);
 
                     db.close();
 
